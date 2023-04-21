@@ -16,7 +16,6 @@ function Home({ movieList, setMovieList }) {
         localStorage.setItem("Id", id);
     };
 
-    //chat
     const handleDelete = (id) => {
         var index = movieList
             .map(function (m) {
@@ -31,67 +30,67 @@ function Home({ movieList, setMovieList }) {
 
     return (
         <Fragment>
-            <div
-                style={{
-                    marginLeft: "20rem",
-                    marginRight: "20rem",
-                    marginTop: "2.5rem",
-                }}
-            >
+            <div className="table-width">
                 <h1>Best Movies</h1>
-                <Table bordered hover size="sm" className="table">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Genre</th>
-                            <th>Year</th>
-                            <th>Rating</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {movieList && movieList.length > 0
-                            ? movieList.map((item) => {
-                                  return (
-                                      <tr>
-                                          <td>{item.Name}</td>
-                                          <td>{item.Genre}</td>
-                                          <td>{item.Year}</td>
-                                          <td>{item.Rating}</td>
-                                          <td>
-                                              <Link to={"/edit"}>
-                                                  <Button
-                                                      className="button"
-                                                      onClick={() =>
-                                                          handleEdit(
-                                                              item.id,
-                                                              item.Name,
-                                                              item.Genre,
-                                                              item.Year,
-                                                              item.Rating
-                                                          )
-                                                      }
-                                                  >
-                                                      Edit
-                                                  </Button>
-                                              </Link>
-                                              &nbsp;
-                                              <Button
-                                                  className="button"
-                                                  onClick={() =>
-                                                      handleDelete(item.id)
-                                                  }
-                                              >
-                                                  Delete
-                                              </Button>
-                                          </td>
-                                      </tr>
-                                  );
-                              })
-                            : "No data available"}
-                    </tbody>
-                </Table>
-                <br></br>
-                <Link className="" to="/create">
+                <div className="table-responsive">
+                    <Table bordered hover size="sm" className="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Genre</th>
+                                <th>Year</th>
+                                <th>Rating</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {movieList && movieList.length > 0 ? (
+                                movieList.map((item) => {
+                                    return (
+                                        <tr>
+                                            <td>{item.Name}</td>
+                                            <td>{item.Genre}</td>
+                                            <td>{item.Year}</td>
+                                            <td>{item.Rating}</td>
+                                            <td>
+                                                <Link to={"/edit"}>
+                                                    <Button
+                                                        className="button"
+                                                        onClick={() =>
+                                                            handleEdit(
+                                                                item.id,
+                                                                item.Name,
+                                                                item.Genre,
+                                                                item.Year,
+                                                                item.Rating
+                                                            )
+                                                        }
+                                                    >
+                                                        Edit
+                                                    </Button>
+                                                </Link>
+                                                &nbsp;
+                                                <Button
+                                                    className="button"
+                                                    onClick={() =>
+                                                        handleDelete(item.id)
+                                                    }
+                                                >
+                                                    Delete
+                                                </Button>
+                                            </td>
+                                        </tr>
+                                    );
+                                })
+                            ) : (
+                                <tr>
+                                    <td colSpan="4">No data available</td>
+                                </tr>
+                            )}
+                        </tbody>
+                    </Table>
+                </div>
+                <br />
+                <Link className="d-sm-block" to="/create">
                     <Button className="button" size="lg">
                         Create
                     </Button>

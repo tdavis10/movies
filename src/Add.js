@@ -35,14 +35,7 @@ function Add({ movieList, setMovieList }) {
     };
     return (
         <div>
-            <Form
-                className=""
-                style={{
-                    marginLeft: "25rem",
-                    marginRight: "25rem",
-                    marginTop: "2.5rem",
-                }}
-            >
+            <Form className="table-width">
                 <h3>Add Movie</h3>
                 <Form.Group className="mb-3" controlId="formName">
                     <div className="label">Name</div>

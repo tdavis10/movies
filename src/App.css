@@ -14,9 +14,10 @@ html {
 
 }
 .image {
-  width: 800px;
+  max-width: 800px;
   float: left;
   margin-left: 0;
+  height: auto;
 }
 
 .right {
@@ -26,3 +27,44 @@ html {
 .label {
   text-align: left;
 }
+
+.table-width {
+  margin-left: 25rem;
+  margin-right: 25rem;
+  margin-top: 2.5rem;
+}
+@media screen and (max-width: 1155px) {
+  .table-width {
+    margin-left: 10rem;
+  margin-right: 10rem;
+  margin-top: 2.5rem;
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .image {
+    max-width: 50%;
+    margin: 0 auto;
+  }
+  
+  .right {
+    width: 100%;
+  }
+
+  .table-width {
+    margin-left: 5rem;
+  margin-right: 5rem;
+  margin-top: 2.5rem;
+  }
+}
+
+/* @media only screen and (max-width: 600px) {
+  .table-responsive {
+    overflow-x: auto;
+  }
+  
+  .table td, .table th {
+    white-space: nowrap;
+  }
+} */
+

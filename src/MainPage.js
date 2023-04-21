@@ -12,7 +12,7 @@ function MainPage() {
                 <h1>The Best Movie Website</h1>
                 <h5>Have a favorite movie?</h5>
                 <p>Add it to our best movies ever database!</p>
-                <Link to="/table" style={{ textDecoration: "none" }}>
+                <Link to="/table" className=".button">
                     <Button className="button">Add Movie</Button>
                 </Link>
             </div>
