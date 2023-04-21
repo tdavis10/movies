@@ -1,0 +1,40 @@
+#header {
+    background-color: white;
+    padding: 10px;
+    box-shadow: 2px 2px 4px rgba(233, 233, 233, 0.4);
+  }
+  
+  .nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  
+  .logo {
+    font-size: 24px;
+  }
+  
+  .title {
+    color: #333;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  
+  .nav-links {
+    display: flex;
+  }
+  
+  .nav-link {
+    margin-left: 20px;
+    color: #333;
+    text-decoration: none;
+  }
+  
+  .nav-link:hover {
+    color: #777777;
+  }
+  
+  .active {
+    color: #ff0000;
+  }
+  

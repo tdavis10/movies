@@ -1,12 +1,12 @@
 import React, { Fragment } from "react";
 import { Button, Table } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Movie from "./Movie";
+import "./App.css";
+
 import { Link, useNavigate } from "react-router-dom";
 
-function Home({movieList, setMovieList}) {
+function Home({ movieList, setMovieList }) {
     let history = useNavigate();
-
 
     const handleEdit = (id, name, genre, year, rating) => {
         localStorage.setItem("Rating", rating);
@@ -18,34 +18,28 @@ function Home({movieList, setMovieList}) {
 
     //chat
     const handleDelete = (id) => {
-        var index = movieList.map(function (m) {
-            return m.id;
-        }).indexOf(id);
+        var index = movieList
+            .map(function (m) {
+                return m.id;
+            })
+            .indexOf(id);
         const newMovieList = [...movieList];
         newMovieList.splice(index, 1);
         setMovieList(newMovieList);
-        history("/");
-      };
+        history("/table");
+    };
 
-    // const handleDelete = (id, movieList) => {
-
-    //     let newMovieList = movieList;
-
-    //     var index = movieList.map(function (m) {
-    //         return m.id;
-    //     }).indexOf(id);
-        
-
-    //     newMovieList.splice(index, 1)
-
-    //     setMovieList(newMovieList);
-
-    //     history("/");
-    // };
     return (
         <Fragment>
-            <div style={{ margin: "10rem" }}>
-                <Table striped bordered hover size="sm">
+            <div
+                style={{
+                    marginLeft: "20rem",
+                    marginRight: "20rem",
+                    marginTop: "2.5rem",
+                }}
+            >
+                <h1>Best Movies</h1>
+                <Table bordered hover size="sm" className="table">
                     <thead>
                         <tr>
                             <th>Name</th>
@@ -66,6 +60,7 @@ function Home({movieList, setMovieList}) {
                                           <td>
                                               <Link to={"/edit"}>
                                                   <Button
+                                                      className="button"
                                                       onClick={() =>
                                                           handleEdit(
                                                               item.id,
@@ -81,6 +76,7 @@ function Home({movieList, setMovieList}) {
                                               </Link>
                                               &nbsp;
                                               <Button
+                                                  className="button"
                                                   onClick={() =>
                                                       handleDelete(item.id)
                                                   }
@@ -96,7 +92,9 @@ function Home({movieList, setMovieList}) {
                 </Table>
                 <br></br>
                 <Link className="" to="/create">
-                    <Button size="lg">Create</Button>
+                    <Button className="button" size="lg">
+                        Create
+                    </Button>
                 </Link>
             </div>
         </Fragment>

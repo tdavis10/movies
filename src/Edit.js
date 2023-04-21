@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Button, Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link, useNavigate } from "react-router-dom";
+import "./App.css";
 
-function Edit({movieList, setMovieList}) {
-    const MOVIES = "movies"
+function Edit({ movieList, setMovieList }) {
+    const MOVIES = "movies";
     const [rating, setRating] = useState("");
     const [year, setYear] = useState("");
     const [genre, setGenre] = useState("");
@@ -13,9 +14,11 @@ function Edit({movieList, setMovieList}) {
 
     let history = useNavigate();
 
-    var index = movieList.map(function (m) {
-        return m.id;
-    }).indexOf(id);
+    var index = movieList
+        .map(function (m) {
+            return m.id;
+        })
+        .indexOf(id);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -27,20 +30,24 @@ function Edit({movieList, setMovieList}) {
         a.Year = year;
         a.Rating = rating;
 
-
         const updatedMovies = movieList.map((movie) => {
             if (movie.id === id) {
-                return {...movie, Name: a.Name, Genre: a.Genre, Year: a.Year, Rating: a.Rating }
+                return {
+                    ...movie,
+                    Name: a.Name,
+                    Genre: a.Genre,
+                    Year: a.Year,
+                    Rating: a.Rating,
+                };
             }
             return movie;
         });
-
 
         // let  updatedMovie = { id: id, Name: a.Name, Genre: a.Genre, Year: a.Year, Rating: a.Rating }
         // let updatedMovieList = movieList.splice(index, 0, updatedMovie);
         setMovieList(updatedMovies);
 
-        history("/");
+        history("/table");
     };
 
     useEffect(() => {
@@ -53,8 +60,17 @@ function Edit({movieList, setMovieList}) {
 
     return (
         <div>
-            <Form className="d-grid gap-2" style={{ margin: "15rem" }}>
+            <Form
+                className=""
+                style={{
+                    marginLeft: "25rem",
+                    marginRight: "25rem",
+                    marginTop: "2.5rem",
+                }}
+            >
+                <h3>Edit Movie</h3>
                 <Form.Group className="mb-3" controlId="formName">
+                    <div className="label">Name</div>
                     <Form.Control
                         type="text"
                         placeholder="Enter Name"
@@ -64,6 +80,7 @@ function Edit({movieList, setMovieList}) {
                     ></Form.Control>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formGenre">
+                    <div className="label">Genre</div>
                     <Form.Control
                         type="text"
                         placeholder="Enter Genre"
@@ -73,6 +90,7 @@ function Edit({movieList, setMovieList}) {
                     ></Form.Control>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formYear">
+                    <div className="label">Year</div>
                     <Form.Control
                         type="text"
                         placeholder="Enter Year"
@@ -82,6 +100,7 @@ function Edit({movieList, setMovieList}) {
                     ></Form.Control>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formRating">
+                    <div className="label">Rating</div>
                     <Form.Control
                         type="text"
                         placeholder="Enter Rating"
@@ -90,10 +109,18 @@ function Edit({movieList, setMovieList}) {
                         onChange={(e) => setRating(e.target.value)}
                     ></Form.Control>
                 </Form.Group>
-                <Button onClick={(e) => handleSubmit(e)} type="submit">
+                <Button className="button">
+                    <Link to="/table" className="link">
+                        Back
+                    </Link>
+                </Button>
+                <Button
+                    onClick={(e) => handleSubmit(e)}
+                    type="submit"
+                    className="button"
+                >
                     Update
                 </Button>
-                <Link to="/" className="button">Back</Link>
             </Form>
         </div>
     );

@@ -1,4 +1,28 @@
 .App {
   text-align: center;
+  background-color: #f0f0f0;
+  max-width: 100%;
+}
+html {
+  background-color: #f0f0f0;
 }
 
+
+.table {
+  background-color: white;
+  border-radius: 10px;
+
+}
+.image {
+  width: 800px;
+  float: left;
+  margin-left: 0;
+}
+
+.right {
+  margin-top: 8rem;
+}
+
+.label {
+  text-align: left;
+}

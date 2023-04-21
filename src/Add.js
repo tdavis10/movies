@@ -3,19 +3,14 @@ import { Button, Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { v4 as uuid } from "uuid";
 import { Link, useNavigate } from "react-router-dom";
-import "./Add.css"
+import "./Add.css";
 
-
-
-
-
-function Add({movieList, setMovieList}) {
-
+function Add({ movieList, setMovieList }) {
     const MOVIES = "movies";
     const [genre, setGenre] = useState("");
     const [year, setYear] = useState("");
     const [rating, setRating] = useState("");
-    const [name, setName] = useState("")
+    const [name, setName] = useState("");
 
     let history = useNavigate();
 
@@ -30,18 +25,27 @@ function Add({movieList, setMovieList}) {
         let c = year;
         let d = rating;
 
-        let  newMovie = { id: uniqueId, Name: a, Genre: b, Year: c, Rating: d }
+        let newMovie = { id: uniqueId, Name: a, Genre: b, Year: c, Rating: d };
         let updatedMovieList = [...movieList, newMovie];
         setMovieList(updatedMovieList);
 
         // Movie.push({ id: uniqueId, Name: a, Genre: b, Year: c, Rating: d });
 
-        history("/");
+        history("/table");
     };
     return (
         <div>
-            <Form className="d-grid gap-2" style={{ margin: "15rem" }}>
+            <Form
+                className=""
+                style={{
+                    marginLeft: "25rem",
+                    marginRight: "25rem",
+                    marginTop: "2.5rem",
+                }}
+            >
+                <h3>Add Movie</h3>
                 <Form.Group className="mb-3" controlId="formName">
+                    <div className="label">Name</div>
                     <Form.Control
                         type="text"
                         placeholder="Enter Name"
@@ -50,6 +54,7 @@ function Add({movieList, setMovieList}) {
                     ></Form.Control>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formGenre">
+                    <div className="label">Genre</div>
                     <Form.Control
                         type="text"
                         placeholder="Enter Genre"
@@ -58,6 +63,7 @@ function Add({movieList, setMovieList}) {
                     ></Form.Control>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formYear">
+                    <div className="label">Year</div>
                     <Form.Control
                         type="text"
                         placeholder="Enter Year"
@@ -66,6 +72,7 @@ function Add({movieList, setMovieList}) {
                     ></Form.Control>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formRating">
+                    <div className="label">Ratings</div>
                     <Form.Control
                         type="text"
                         placeholder="Enter Rating"
@@ -73,10 +80,18 @@ function Add({movieList, setMovieList}) {
                         onChange={(e) => setRating(e.target.value)}
                     ></Form.Control>
                 </Form.Group>
-                <Button onClick={(e) => handleSubmit(e)} type="submit">
+                <Button className="button">
+                    <Link to="/table" className="link">
+                        Back
+                    </Link>
+                </Button>
+                <Button
+                    className="button"
+                    onClick={(e) => handleSubmit(e)}
+                    type="submit"
+                >
                     Submit
                 </Button>
-                <Link to="/" className="button">Back</Link>
             </Form>
         </div>
     );
